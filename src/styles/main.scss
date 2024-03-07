@@ -1,0 +1,145 @@
+@use 'vars';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Dosis, sans-serif;
+    color: vars.$primaryTextColor;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+body {
+    background-color: vars.$primaryColor;
+}
+
+.header {
+    font-size: vars.$biggerTextSize;
+    text-align: center;
+    height: 160px;
+    padding: 16px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 0;
+    height: calc(100vh - 160px);
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+    
+    @media (min-width: 641px) and (max-width: 1023px) {
+        grid-template-columns: 1fr;
+        height: 0;
+    }
+}
+
+.about {
+    padding: 16px 36px;
+
+    h2, h3, p, address {
+        font-size: vars.$bigTextSize;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    @media (max-width: 640px) {
+        padding-top: 88px;
+    }
+
+    @media (min-width: 641px) and (max-width: 1023px) {
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+}
+
+.invitation-form {
+    background-color: vars.$secondaryColor;
+    border-top-left-radius: 48px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 0 16px vars.$bgColor;
+
+    @media (max-width:640px) {
+        padding: 16px 0;
+    }
+
+    @media (min-width: 641px) and (max-width: 1023px) {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.invitation {
+    padding: 24px 8px 0 8px;
+    position: relative;
+
+    &__name, &__email {
+        color: vars.$primaryTextColor;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid vars.$bgColor;
+        display: block;
+        width: 100%;
+        margin: 48px 0;
+        background-color: transparent;
+        font-size: vars.$bigTextSize;
+    }
+    &__name .invitation__label-name,
+    &__email .invitation__label-email {
+        position: relative; 
+    }
+
+    &__name:focus ~ .invitation__label-name,
+    &__name:valid ~ .invitation__label-name {
+        transform: translate(88px, -24px)
+    }
+
+    &__email:focus ~ .invitation__label-email,
+    &__email:valid ~ .invitation__label-email {
+        transform: translate(88px, -24px)
+    }
+
+    &__label-name {
+        position: absolute;
+        top: 80px;
+        left: 8px;
+        transition: .5s ease;
+    }
+
+    &__label-email {
+        position: absolute;
+        top: 160px;
+        left: 8px;
+        transition: .5s ease;
+    }
+}
+
+.btn-send {
+    color: vars.$secondaryTextColor;
+    font-size: vars.$bigTextSize;
+    font-weight: bold;
+    width: 100%;
+    border: transparent;
+    border-radius: 16px;
+    padding: 16px 0;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.success-message {
+    display: none;
+    width: 100%;
+    padding-top: 8px;
+    text-align: center;
+}
